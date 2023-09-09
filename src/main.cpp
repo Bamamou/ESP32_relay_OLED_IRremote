@@ -1,20 +1,9 @@
 //How to draw points and figures on an OLED Screen.
 //First include this libs
 
-#include <Wire.h>                   // For IIC communication with the OLED
-#include <Adafruit_GFX.h>           // OLED librairy for UI and display
-#include <Adafruit_SSD1306.h>
-#include<IRremote.h>               // For IR remote (sender and receiver)
-// Define the params of the OLED
-#define SCREEN_WIDTH 128
-//Set the Height of the OLED SCREEN
-#define SCREEN_HEIGHT 64
-// the reset pin of the OLED
-#define RESET_Pin -1
-// the pin of the IR remote
-# define Receiver_Remote_Pin 34
-// the LED Pin for the relay
-int      Relay_Pin[10] ={13, 12, 14, 15, 2, 4, 5, 18, 19, 23};  
+#include <Arduino.h>
+#include "main.h"
+
 
 Adafruit_SSD1306 OLED(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, RESET_Pin); //Attach the OLED
 
