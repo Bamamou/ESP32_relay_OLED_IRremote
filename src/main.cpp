@@ -1,16 +1,20 @@
 //How to draw points and figures on an OLED Screen.
 //First include this libs
 
-#include <Wire.h>
-#include <Adafruit_GFX.h>
+#include <Wire.h>                   // For IIC communication with the OLED
+#include <Adafruit_GFX.h>           // OLED librairy for UI and display
 #include <Adafruit_SSD1306.h>
-#include<IRremote.h>
+#include<IRremote.h>               // For IR remote (sender and receiver)
 // Define the params of the OLED
 #define SCREEN_WIDTH 128
+//Set the Height of the OLED SCREEN
 #define SCREEN_HEIGHT 64
+// the reset pin of the OLED
 #define RESET_Pin -1
+// the pin of the IR remote
 # define Receiver_Remote_Pin 34
-int      Relay_Pin[10] ={13, 12, 14, 15, 2, 4, 5, 18, 19, 23};
+// the LED Pin for the relay
+int      Relay_Pin[10] ={13, 12, 14, 15, 2, 4, 5, 18, 19, 23};  
 
 Adafruit_SSD1306 OLED(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, RESET_Pin); //Attach the OLED
 
@@ -44,7 +48,7 @@ void loop() {
  
    if (IrReceiver.decode()) {
      // Serial.println(results.value, HEX); // Print "old" raw data
-      if((IrReceiver.decodedIRData.decodedRawData, HEX)==0XF0DB1AE0){
+      if((IrReceiver.decodedIRData.decodedRawData, HEX)==0x5DA2FF00){
        for(int i =0; i<10; i++){
          if(digitalRead( Relay_Pin[i])==0){
             digitalWrite( Relay_Pin[i], HIGH);
@@ -67,7 +71,7 @@ void loop() {
        }
   // Button 0 
       }
-      if((IrReceiver.decodedIRData.decodedRawData, HEX)==0xE39FAC1B){  
+      if((IrReceiver.decodedIRData.decodedRawData, HEX)==0x9768FF00){  
        
           if(digitalRead( Relay_Pin[0])==0){
             digitalWrite( Relay_Pin[0], HIGH);
@@ -86,7 +90,7 @@ void loop() {
           }
       // Button 1
       }
-      if((IrReceiver.decodedIRData.decodedRawData, HEX)==0X6B7832FF){  
+      if((IrReceiver.decodedIRData.decodedRawData, HEX)==0xCF30FF00){  
         
           if(digitalRead( Relay_Pin[1])==0){
             digitalWrite( Relay_Pin[1], HIGH);
@@ -105,7 +109,7 @@ void loop() {
           }
       }
       // Button 2
-      if((IrReceiver.decodedIRData.decodedRawData, HEX)==0X3D9AE3F7){
+      if((IrReceiver.decodedIRData.decodedRawData, HEX)==0xE718FF00){
       
           if(digitalRead( Relay_Pin[2])==0){
             digitalWrite( Relay_Pin[2], HIGH);
@@ -124,7 +128,7 @@ void loop() {
           }
       }
       //Button Number 3
-      if((IrReceiver.decodedIRData.decodedRawData, HEX)==0X31C5DD7B){
+      if((IrReceiver.decodedIRData.decodedRawData, HEX)==0x857AFF00){
         if(digitalRead( Relay_Pin[3])==0){
             digitalWrite( Relay_Pin[3], HIGH);
             // Draw a filled circle
@@ -143,7 +147,7 @@ void loop() {
       }
   // Button Number 4
      
-       if((IrReceiver.decodedIRData.decodedRawData, HEX)==0X45473C1B){
+       if((IrReceiver.decodedIRData.decodedRawData, HEX)==0xEF10FF00){
        if(digitalRead( Relay_Pin[4])==0){
             digitalWrite( Relay_Pin[4], HIGH);
             // Draw a filled circle
@@ -161,7 +165,7 @@ void loop() {
           }
       }
   // Button Number 5
-       if((IrReceiver.decodedIRData.decodedRawData, HEX)==0X63CBDADB){
+       if((IrReceiver.decodedIRData.decodedRawData, HEX)==0xC738FF00){
       
         if(digitalRead( Relay_Pin[5])==0){
             digitalWrite( Relay_Pin[5], HIGH);
@@ -180,7 +184,7 @@ void loop() {
           }
        }
       // Button number 6
-      if((IrReceiver.decodedIRData.decodedRawData, HEX)==0X449E79F){
+      if((IrReceiver.decodedIRData.decodedRawData, HEX)==0xA55AFF00){
 
         if(digitalRead( Relay_Pin[6])==0){
             digitalWrite( Relay_Pin[6], HIGH);
@@ -200,7 +204,7 @@ void loop() {
 
       }
   // Button Number 7  
-      if((IrReceiver.decodedIRData.decodedRawData, HEX)==0X32C6FDF7){
+      if((IrReceiver.decodedIRData.decodedRawData, HEX)==0xBD42FF00){
        if(digitalRead( Relay_Pin[7])==0){
             digitalWrite( Relay_Pin[7], HIGH);
             // Draw a filled circle
@@ -218,7 +222,7 @@ void loop() {
           }
       }
   // Button Number 8
-      if((IrReceiver.decodedIRData.decodedRawData, HEX)==0X3EC3FC1B){
+      if((IrReceiver.decodedIRData.decodedRawData, HEX)==0xB54AFF00){
        if(digitalRead( Relay_Pin[8])==0){
             digitalWrite( Relay_Pin[8], HIGH);
             // Draw a filled circle
@@ -236,7 +240,7 @@ void loop() {
           }
       }
   // Button Number 9
-      if((IrReceiver.decodedIRData.decodedRawData, HEX)==0X1BC0157B){
+      if((IrReceiver.decodedIRData.decodedRawData, HEX)==0xAD52FF00){
        if(digitalRead( Relay_Pin[9])==0){
             digitalWrite( Relay_Pin[9], HIGH);
             // Draw a filled circle
